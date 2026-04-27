@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopFlow — Shop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+ 
+<body class="shop-page">
+ 
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:8px">
+          <span class="brand-icon">◈</span>
+          <span class="brand-name">ShopFlow</span>
+        </a>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="shop.html">Shop</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="login.html">Login</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-ghost cart-btn" id="btn-cart" type="button">
+          <span>⊡</span> Cart
+          <span class="cart-badge hidden" id="cart-count">0</span>
+        </button>
+        <a class="btn btn-primary" href="login.html">Dashboard →</a>
+      </div>
+    </div>
+  </header>
+ 
+  <div class="page-hero">
+    <div class="page-hero-top">
+      <div>
+        <h1 class="page-title">All <span>Products</span></h1>
+        <p class="page-subtitle">Browse the full catalog</p>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="shop-layout">
+ 
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <p class="sidebar-title">Category</p>
+        <select class="form-select" id="cat-filter">
+  <option value="all">All categories</option>
+</select>
+      </div>
+    </aside>
+ 
+    <div class="shop-main">
+      <div class="shop-toolbar">
+        <input class="form-input shop-search" type="search" id="shop-search" placeholder="Search products…" />
+      </div>
+ 
+      <div class="shop-grid" id="shop-grid">
+        <div class="loader" style="grid-column:1/-1" id="shop-loader">
+          <div class="spinner"></div>
+          <p>Loading products…</p>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <footer class="site-footer">© 2025 ShopFlow — JavaScript Final Project</footer>
+ 
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h2 class="modal-title">Your cart</h2>
+      <button class="modal-close" id="btn-cart-close" type="button">✕</button>
+    </div>
+    <ul class="cart-items-list" id="cart-items-list"></ul>
+    <p class="empty-cart hidden" id="empty-cart">Your cart is empty.</p>
+    <div class="cart-footer">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-value" id="cart-total">$0.00</span>
+    </div>
+  </aside>
+ 
+  <script type="module" src="js/shop.js"></script>
+ 
+</body>
+</html>

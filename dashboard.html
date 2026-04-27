@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopFlow — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dashboard-page">
+
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-name">ShopFlow</span>
+      </div>
+
+      <nav class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="about.html">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Cart button — JS updates badge -->
+        <button class="btn btn-ghost cart-btn" id="btn-cart" type="button">
+          <span>⊡</span> Cart
+          <span class="cart-badge hidden" id="cart-count">0</span>
+        </button>
+
+        <!-- User chip — JS fills name + avatar -->
+        <span class="user-chip">
+          <span class="user-avatar" id="user-avatar">U</span>
+          <span id="user-name">User</span>
+        </span>
+
+        <button class="btn btn-ghost" id="btn-logout" type="button">Log out</button>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="main-content">
+<div class="page-hero">
+  <h1>Welcome back, <span id="user-greeting"></span>!</h1>
+</div>
+
+  
+    <section class="stats-row">
+      <div class="stat-card">
+        <span class="stat-label">Total products</span>
+        <span class="stat-value" id="home-stat-total">—</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Categories</span>
+        <span class="stat-value" id="home-stat-cats">—</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Avg. price</span>
+        <span class="stat-value" id="home-stat-avg">—</span>
+      </div>
+    </section>
+
+    <!-- Toolbar -->
+    <section class="toolbar">
+      <input class="form-input toolbar-search" type="search" id="search-input" placeholder="Search products…" />
+      <select class="form-select" id="filter-select">
+        <option value="all">All categories</option>
+      </select>
+      <select class="form-select" id="sort-select">
+        <option value="default">Sort: Default</option>
+        <option value="price-asc">Price ↑</option>
+        <option value="price-desc">Price ↓</option>
+        <option value="name-asc">Name A→Z</option>
+        <option value="name-desc">Name Z→A</option>
+      </select>
+      <button class="btn btn-primary" id="btn-add-product" type="button">+ Add product</button>
+    </section>
+
+<div class="loader hidden" id="loader">
+      <div class="spinner"></div>
+      <p>Loading products…</p>
+    </div>
+
+    <div class="error-banner hidden" id="fetch-error">
+      ⚠ Could not load products. Check your connection.
+    </div>
+
+
+    <div class="product-grid" id="product-grid"></div>
+
+    <!-- Empty state: JS toggles .hidden -->
+    <div class="empty-state hidden" id="empty-state">
+      <p class="empty-icon">◻</p>
+      <p>No products found.</p>
+      <button class="btn btn-ghost" id="btn-clear-filters" type="button">Clear filters</button>
+    </div>
+
+  </main>
+
+
+  <div class="modal-backdrop hidden" id="add-modal">
+    <div class="modal" role="dialog" aria-modal="true">
+
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Add new product</h2>
+        <button class="modal-close" id="btn-modal-close" type="button">✕</button>
+      </div>
+
+      <form class="auth-form" id="add-product-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="new-title">Product name</label>
+          <input class="form-input" type="text" id="new-title" placeholder="e.g. Wireless Headphones" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="new-price">Price ($)</label>
+            <input class="form-input" type="number" id="new-price" min="0" step="0.01" placeholder="29.99" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="new-category">Category</label>
+            <input class="form-input" type="text" id="new-category" placeholder="electronics" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-image">Image URL</label>
+          <input class="form-input" type="url" id="new-image" placeholder="https://…" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="new-desc">Description</label>
+          <textarea class="form-input form-textarea" id="new-desc" rows="3" placeholder="Short description…"></textarea>
+        </div>
+
+
+        <p class="error-msg hidden" id="modal-error">Please fill in all required fields.</p>
+
+        <div class="modal-actions">
+          <button class="btn btn-ghost" type="button" id="btn-modal-cancel">Cancel</button>
+          <button class="btn btn-primary" type="submit">Save product</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h2 class="modal-title">Your cart</h2>
+      <button class="modal-close" id="btn-cart-close" type="button">✕</button>
+    </div>
+
+
+    <ul class="cart-items-list" id="cart-items-list"></ul>
+
+    <p class="empty-cart hidden" id="empty-cart">Your cart is empty.</p>
+
+    <div class="cart-footer">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-value" id="cart-total">$0.00</span>
+    </div>
+  </aside>
+
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

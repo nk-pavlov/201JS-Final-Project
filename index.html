@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopFlow — Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="home-page">
+ 
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="brand-icon">◈</span>
+        <span class="brand-name">ShopFlow</span>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="shop.html">Shop</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="login.html">Login</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-ghost cart-btn" id="btn-cart" type="button">
+          <span>⊡</span> Cart
+          <span class="cart-badge hidden" id="cart-count">0</span>
+        </button>
+        <a class="btn btn-primary" href="login.html">Go to Dashboard →</a>
+      </div>
+    </div>
+  </header>
+ 
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">◈ Product Catalog Platform</span>
+      <h1 class="hero-title">Manage your catalog<br/>with <span>ShopFlow</span></h1>
+      <p class="hero-sub">Browse products, filter by category, track your cart — all in one fast dashboard.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="login.html">Get started →</a>
+        <a class="btn btn-ghost" href="shop.html">Browse catalog</a>
+      </div>
+    </div>
+  </section>
+ 
+  <div class="home-stats">
+    <div class="stat-card">
+      <span class="stat-label">Products</span>
+      <span class="stat-value" id="home-stat-total">—</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Categories</span>
+      <span class="stat-value" id="home-stat-cats">—</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Avg. price</span>
+      <span class="stat-value" id="home-stat-avg">—</span>
+    </div>
+  </div>
+ 
+  <div class="section-header">
+    <h2 class="section-title">Featured <span>Products</span></h2>
+    <a class="section-link" href="shop.html">View all →</a>
+  </div>
+ 
+  <div class="featured-grid" id="featured-grid">
+    <div class="loader" id="featured-loader" style="grid-column:1/-1">
+      <div class="spinner"></div>
+      <p>Loading products…</p>
+    </div>
+  </div>
+ 
+  <div class="section-header" style="margin-top:0">
+    <h2 class="section-title">Why <span>ShopFlow</span>?</h2>
+  </div>
+ 
+  <div class="features-strip">
+    <div class="feature-card">
+      <span class="feature-icon">⊡</span>
+      <span class="feature-title">Live Cart</span>
+      <p class="feature-desc">Add items, track totals in real time. Cart state is preserved across filters.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">◈</span>
+      <span class="feature-title">Smart Filtering</span>
+      <p class="feature-desc">Filter by category, sort by price or name, search by keyword — all instant.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">▦</span>
+      <span class="feature-title">Add & Delete</span>
+      <p class="feature-desc">Add custom products, delete what you don't need. Data saved locally.</p>
+    </div>
+  </div>
+ 
+  <footer class="site-footer">© 2025 ShopFlow — JavaScript Final Project</footer>
+ 
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h2 class="modal-title">Your cart</h2>
+      <button class="modal-close" id="btn-cart-close" type="button">✕</button>
+    </div>
+    <ul class="cart-items-list" id="cart-items-list"></ul>
+    <p class="empty-cart hidden" id="empty-cart">Your cart is empty.</p>
+    <div class="cart-footer">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-value" id="cart-total">$0.00</span>
+    </div>
+  </aside>
+ 
+  <script type="module" src="js/home.js"></script>
+ 
+</body>
+</html>
